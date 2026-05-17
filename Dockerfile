@@ -33,7 +33,7 @@ RUN set -eux; \
     sed -i -E 's/"openclaw"[[:space:]]*:[[:space:]]*"workspace:[^"]+"/"openclaw": "*"/g' "$f"; \
   done
 
-RUN npm pkg set packageManager="pnpm@10.23.0" && pnpm install --frozen-lockfile  
+RUN npm pkg set packageManager="pnpm@10.23.0" && pnpm install --no-frozen-lockfile
 RUN pnpm build
 ENV OPENCLAW_PREFER_PNPM=1
 RUN pnpm ui:install && pnpm ui:build
